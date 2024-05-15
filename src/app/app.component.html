@@ -2,14 +2,17 @@
 <div class="container">
     <div class="row">
         <div *ngFor="let pokemon of pokemonList" class="col m4 s6">
-            <div class="card horizontal">
+            <div class="card horizontal" pkmnBorderCard>
                 <div class="card-image">
-                    <img [src]="pokemon.picture">
+                    <img [src]="pokemon.picture" [appSizeImg]="170">
                 </div>
                 <div class="card-stacked">
                     <div class="card-content">
-                        <p> {{pokemon.name}} </p>
-                        <p><small>{{pokemon.created}}</small></p>
+                        <p> <b>{{pokemon.name}}</b> </p>
+                        <p>{{pokemon.created | date:'dd/MM/yyyy'}}</p>
+                        <span *ngFor="let type of pokemon.types" class="{{type | pokemonTypeColor}}">
+                            {{type}}
+                        </span>
                     </div>
                 </div>
             </div>
